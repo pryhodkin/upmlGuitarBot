@@ -32,6 +32,8 @@ def handle_lyrics(message):
 
 
 
+
+
 @bot.message_handler(commands = ['help', 'start'])
 
 def handle_help(message):

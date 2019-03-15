@@ -296,7 +296,8 @@ refrain (2x)
 
 
 
-["Сплин","Моё сердце","""Мы не знали друг друга до этого лета
+["Сплин","Моё сердце",
+"""Мы не знали друг друга до этого лета
 Мы болтались по свету в земле и воде
 И совершенно случайно мы взяли билеты
 Hа соседние кресла на большой высоте
@@ -1102,6 +1103,1082 @@ Soldier
 Всем уговорам твержу я в ответ
 Нас не разлучат - нет!
 """],
+
+
+
+["The Cranberries","Zombie",
+ """Another head hangs lowly
+Child is slowly taken
+And the violence caused such silence
+Who are we mistaken
+
+But you see it's not me
+It's not my family
+In your head, in your
+Head they are fighting
+With their tanks and their bombs
+And their bombs and their guns
+In your head,
+In your head they are cryin'
+
+In your head, in your head
+Zombie, zombie, zombie
+Hey, hey
+What's in your head, in your head
+Zombie, zombie, zombie
+Hey, hey, hey, oh
+Dou, dou, dou, dou
+Dou, dou, dou, dou
+Dou, dou, dou, dou
+Dou, dou, dou, dou
+
+Another mother's breakin'
+Heart is taking over
+When the violence causes silence
+We must be mistaken
+
+It's the same old theme since nineteen-sixteen
+In your head,
+In your head they're still fightin'
+With their tanks and their bombs
+And their bombs and their guns
+In your head, in your head they are dyin'
+
+In your head, in your head
+Zombie, zombie, zombie
+Hey, hey
+What's in your head, in your head
+Zombie, zombie, zombie
+Hey, hey, hey
+Oh, oh, oh, oh, oh, oh, oh
+Hey, oh, ya, ya-a"""],
+
+
+
+["Jeff Buckley","Hallelujah",
+ """Well, I heard there was a secret chord
+That David played and it pleased the Lord
+But you don't really care for music, do you?
+Well it goes like this:
+The fourth, the fifth, the minor fall and the major lift
+The baffled king composing Hallelujah
+
+Hallelujah, Hallelujah, Hallelujah, Hallelujah...
+
+Well your faith was strong but you needed proof
+You saw her bathing on the roof
+Her beauty and the moonlight overthrew ya
+She tied you to her kitchen chair
+She broke your throne and she cut your hair
+And from your lips she drew the Hallelujah
+
+Hallelujah, Hallelujah, Hallelujah, Hallelujah...
+
+Well, baby, I've been here before
+I've seen this room and I've walked this floor (you know)
+I used to live alone before I knew ya
+And I've seen your flag on the marble arch
+And love is not a victory march
+It's a cold and it's a broken Hallelujah
+
+Hallelujah, Hallelujah, Hallelujah, Hallelujah...
+
+Well, there was a time when you let me know
+What's really going on below
+But now you never show that to me, do ya?
+But remember when I moved in you
+And the holy dove was moving too
+And every breath we drew was Hallelujah
+
+Hallelujah, Hallelujah, Hallelujah, Hallelujah...
+
+Maybe there's a God above
+But all I've ever learned from love
+Was how to shoot somebody who outdrew ya
+And it's not a cry that you hear at night
+It's not somebody who's seen the light
+It's a cold and it's a broken Hallelujah
+
+Hallelujah, hallelujah, hallelujah, hallelujah...
+Hallelujah, hallelujah, hallelujah, hallelujah...
+Hallelujah, hallelujah, hallelujah
+Hallelujah, hallelujah"""],
+
+
+
+["The Beatles","Yesterday",
+ """Yesterday all my troubles seemed so far away.
+Now it looks as though they're here to stay.
+Oh, I believe in yesterday.
+
+Suddenly, I'm not half the man I used to be.
+There's a shadow hanging over me.
+Oh, yesterday came suddenly.
+
+Why she had to go?
+I don't know, she wouldn't say.
+I said something wrong.
+Now I long for yesterday.
+
+Yesterday love was such an easy game to play.
+Now I need a place to hide away.
+Oh, I believe in yesterday.
+
+Why she had to go?
+I don't know, she wouldn't say.
+I said something wrong.
+Now I long for yesterday.
+
+Yesterday love was such an easy game to play.
+Now I need a place to hide away.
+Oh, I believe in yesterday.
+
+Mm mm mm mm mm mm mm."""],
+
+
+
+["The Beatles","Hey Jude",
+ """Hey, Jude, don't make it bad
+Take a sad song and make it better
+Remember to let her into your heart
+Then you can start to make it better
+
+Hey, Jude, don't be afraid
+You were made to go out and get her
+The minute you let her under your skin
+Then you begin to make it better
+
+And anytime you feel the pain,
+Hey, Jude, refrain
+Don't carry the world upon your shoulders
+For well you know that it's a fool
+Who plays it cool
+By making his world a little colder
+
+Nah, nah nah, nah nah, nah nah, nah nah
+
+Hey, Jude, don't let me down
+You have found her, now go and get her
+Remember to let her into your heart
+Then you can start to make it better
+
+So let it out and let it in,
+Hey, Jude, begin
+You're waiting for someone to perform with
+And don't you know that it's just you,
+Hey, Jude, you'll do
+The movement you need is on your shoulder
+
+Nah, nah nah, nah nah, nah nah, nah nah yeah
+
+Hey, Jude, don't make it bad
+Take a sad song and make it better
+Remember to let her under your skin
+Then you'll begin to make it better, better, better, better, better... oh!
+
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude (Jude)
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude (yeah, yeah, yeah)
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude (don't make it bad, Jude)
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude (take a sad song and make it better)
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude (oh, Jude)
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude (Jude, hey, Jude, whoa)
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude (ooh)
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude
+Nah, nah nah, nah nah, nah, nah, nah nah,
+Hey, Jude [fade out]"""],
+
+
+
+["Звери","Районы кварталы",
+ """Больше нечего ловить - все, что надо я поймал,
+Надо сразу уходить, чтоб никто не привыкал.
+Ярко-желтые очки, два сердечка на брелке,
+Развеселые зрачки, твое имя на руке.
+
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво.
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво.
+
+У тебя все будет класс, будут ближе облака,
+Я хочу как в первый раз и поэтому пока.
+Ярко-желтые очки, два сердечка на брелке,
+Развеселые зрачки, я шагаю налегке.
+
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво.
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво.
+
+Вот и все никто не ждет и никто не в дураках,
+Кто-то любит, кто-то врет и летает в облаках.
+Ярко-желтые очки, два сердечка на брелке,
+Развеселые зрачки, я шагаю налегке.
+
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво.
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво.
+
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво.
+Районы, кварталы, жилые массивы,
+Я ухожу, ухожу красиво."""],
+
+
+
+["Imagine Dragons","Believer",
+ """First things first
+I'mma say all the words inside my head
+I'm fired up and tired of the way that things have been, oh ooh
+The way that things have been, oh ooh
+
+Second things second
+Don't you tell me what you think that I could be
+I'm the one at the sail, I'm the master of my sea, oh ooh
+The master of my sea, oh ooh
+
+I was broken from a young age
+Taking my sulking to the masses
+Writing my poems for the few
+That look at me, took to me, shook to me, feeling me
+Singing from heartache from the pain
+Taking my message from the veins
+Speaking my lesson from the brain
+Seeing the beauty through the...
+
+Pain!
+You made me a, you made me a believer, believer
+Pain!
+You break me down, you build me up, believer, believer
+Pain!
+Oh let the bullets fly, oh let them rain
+My life, my love, my drive, it came from...
+Pain!
+You made me a, you made me a believer, believer
+
+Third things third
+Send a prayer to the ones up above
+All the hate that you've heard has turned your spirit to a dove, oh ooh
+Your spirit up above, oh ooh
+
+I was choking in the crowd
+Building my rain up in the cloud
+Falling like ashes to the ground
+Hoping my feelings, they would drown
+But they never did, ever lived, ebbing and flowing
+Inhibited, limited
+Till it broke open and rained down
+And rained down, like...
+
+Pain!
+You made me a, you made me a believer, believer
+Pain!
+You break me down, you build me up, believer, believer
+Pain!
+Oh let the bullets fly, oh let them rain
+My life, my love, my drive, it came from...
+Pain!
+You made me a, you made me a believer, believer
+
+Last things last
+By the grace of the fire and the flames
+You're the face of the future, the blood in my veins, oh ooh
+The blood in my veins, oh ooh
+But they never did, ever lived, ebbing and flowing
+Inhibited, limited
+Till it broke open and rained down
+And rained down, like...
+
+Pain!
+You made me a, you made me a believer, believer
+Pain!
+You break me down, you build me up, believer, believer
+Pain!
+Oh let the bullets fly, oh let them rain
+My life, my love, my drive, it came from...
+Pain!
+You made me a, you made me a believer, believer"""],
+
+
+
+["Океан Ельзи","Без бою",
+ """Що ж це я
+Що ж це я не зумів
+Зупинитися вчасно
+Все ясно
+Зі мною тепер і назавжди
+Пізно не йди
+Не йди від мене
+Я налию собі, я налию тобі вина
+А хочеш із медом
+
+Приспів:
+Хто ти є? Ти взяла моє життя
+І не віддала
+Хто ти є? Ти випила мою кров
+І п’яною впала
+Твої очі кличуть, хочуть мене,
+Ведуть за собою
+Хто ти є? І ким би не була ти,
+Я не здамся без бою! (2)
+
+Шо ж це я
+Шо ж це я не зумів
+Зупинити себе, тебе
+Сьогодні
+Сьогодні так дує
+Без тебе сумую
+Сумую без тебе
+Накинь щось на себе
+Я налию собі, я налию тобі вина
+А хочеш із медом
+
+Приспів
+
+Я налию собі, я налию тобі вина
+А хочеш із медом
+
+Приспів
+
+Я не здамся без бою!"""],
+
+
+
+["Плач Єремії","Вона",
+ """Завтра прийде до кімнати
+Твоїх друзів небагато,
+Вип'єте холодного вина.
+
+Хтось принесе білі айстри,
+Скаже хтось — життя прекрасне,
+Так, життя прекрасне, а вона...
+
+Припев:
+А вона, а вона сидітиме сумна,
+Буде пити — не п'яніти від дешевого вина.
+Я співатиму для неї, аж бринітиме кришталь,
+Та хіба зуміє голос подолати цю печаль.
+
+Так вже в світі повелося —
+Я люблю її волосся,
+Я люблю її тонкі уста.
+
+Та невдовзі прийде осінь,
+Ми усі розбіжимося
+По русифікованих містах.
+
+Припев:
+Лиш вона, лиш вона сидітиме сумна,
+Буде пити — не п'яніти від дешевого вина.
+Моя дівчинко печальна, моя доле золота,
+Я продовжую кричати... ніч безмежна і пуста."""],
+
+
+
+["Latexfauna","Космос",
+ """Між кораблями – стиковочки
+Нові космонавти – нові космонавточки
+Нас сюди вела наукова практика
+Вєлком – в нову галактику.
+Вєлком – в нову галактику.
+
+На, трьох, гейзерних планетах,
+Зводять котеджі з пахучої сосни,
+Всі окрім мене покинули ракету
+А мене цікавлять тільки космос,
+І еротичні сни.
+
+Моя путь лежить крізь сузір'я лебедя,
+Безмовно і чиста, вродє би будто я
+І я досліджую всі недосліджені кратери,
+Мій перший телескоп – молоко матері
+Мій перший телескоп – молоко матері
+
+На, трьох, гейзерних планетах,
+Мене чекають молоді ліси.
+Далі, по лунах, летить моя ракета,
+Но мене цікавлять тільки космос,
+І еротичні сни.
+
+Но мене цікавлять тільки космос, і еротичні сни."""],
+
+
+
+["Green Day","Boulevard of broken dreams(Музыкант вещает cover)",
+ """Дорога за спиной
+Не сможет дать сейчас ответ простой:
+Кто твою мечту
+Превратил в кошмар и пустоту?
+
+На улице пустой
+Эхом слёз - "Бульвар разбитых грёз",
+В городе покой
+Но ты один идешь по мостовой...
+
+идешь один...навстречу...
+
+И тень скользит неслышно по асфальту,
+Пустое сердце продолжает биться,
+Твой призрак - жив, поставил всё на карту,
+Чтобы найти её...
+
+И где же эта грань,
+За которой ты не встретишь ложь?
+Лишь шагнув на край
+Ты её увидишь и поймёшь
+
+Читаю между строк
+Рухнувших надежд и сладких грёз:
+Сорванный цветок
+В глубине души твоей - живёт...
+
+идешь один...навстречу...
+
+И тень скользит неслышно по асфальту,
+Пустое сердце продолжает биться,
+Твой призрак - жив, поставил всё на карту,
+Чтобы найти любовь...
+
+(а-а а-а а-а а-а)
+
+идешь один...навстречу...
+
+И тень скользит неслышно по асфальту,
+Пустое сердце продолжает биться,
+Твой призрак - жив, поставил всё на карту,
+Чтобы найти любовь..."""],
+
+
+
+["Bon Jovi","It's my life",
+ """This ain't a song for the broken-hearted
+No silent prayer for the faith-departed
+I ain't gonna be just a face in the crowd
+You're gonna hear my voice
+When I shout it out loud
+
+It's my life
+It's now or never
+I ain't gonna live forever
+I just want to live while I'm alive
+(It's my life)
+My heart is like an open highway
+Like Frankie said,
+"I did it my way."
+I just wanna live while I'm alive
+It's my life
+
+This is for the ones who stood their ground
+For Tommy and Gina who never backed down
+Tomorrow's getting harder make no mistake
+Luck ain't even lucky
+Got to make your own breaks
+
+It's my life
+And it's now or never
+I ain't gonna live forever
+I just want to live while I'm alive
+(It's my life)
+My heart is like an open highway
+Like Frankie said,
+"I did it my way."
+I just want to live while I'm alive
+'Cause it's my life
+
+Better stand tall when they're calling you out
+Don't bend, don't break, baby, don't back down
+
+It's my life
+And it's now or never
+'Cause I ain't gonna live forever
+I just want to live while I'm alive
+(It's my life)
+My heart is like an open highway
+Like Frankie said,
+"I did it my way."
+I just want to live while I'm alive
+
+It's my life
+And it's now or never
+'Cause I ain't gonna live forever
+I just want to live while I'm alive
+(It's my life)
+My heart is like an open highway
+Like Frankie said,
+"I did it my way."
+I just want to live while I'm alive
+'Cause it's my life!"""],
+
+
+
+["Градусы","Режиссёр",
+ """Я закрою за собою, ты сказала "я не стою"
+Я подброшу на удачу, докурю и пойду дальше
+Не дождётесь, не заплачу, если что любовь получит сдачи
+Я в этом фильме главный актёр, я - сценарист в нём, я - режиссёр.
+Припев:
+Враг мой бойся меня, друг мой не отрекайся от меня
+Нелюбимая, прости меня, любимая - люби меня.
+(2 раза)
+
+На минуту замечтаюсь, не летаю, но пытаюсь
+Упаду и поднимаюсь, всё в порядке, оклемаюсь
+Не дождётесь, не заплачу, если что любовь получит сдачи
+Я в этом фильме главный актёр, я - сценарист в нём, я - режиссёр.
+
+Припев.
+
+Третий куплет на языке растафари (лично от DJ Baks):
+
+It's only raf becoz we make our memo on
+We shoulda be adaut discussing love
+N get it raf in Babylon/И получать её раф в Вавилоне
+It's only raf becoz to me come eire mammy
+We shoulda be about discussing love
+And get it raf abaut it, sweet
+Com on ey yo yo lirigorri knoh
+Swing by di rushes
+Terapce means Babylon
+Rastafariyah
+Well prepapay!
+Wit it 1, 2, 3, 4
+
+Припев."""],
+
+
+
+["Виктор Цой","Пачка Сигарет",
+ """Я сижу и смотрю в чужое небо из чужого окна
+И не вижу ни одной знакомой звезды.
+Я ходил по всем дорогам и туда, и сюда, 
+Обернулся - и не смог разглядеть следы.
+
+Припев:
+Но если есть в кармане пачка сигарет, 
+Значит все не так уж плохо на сегодняшний день.
+И билет на самолет с серебристым крылом, 
+Что, взлетая, оставляет земле лишь тень.
+
+И никто не хотел быть виноватым без вина, 
+И никто не хотел руками жар загребать,
+А без музыки на миру смерть не красна, 
+А без музыки не хочется пропадать.
+
+Припев:
+Но если есть в кармане пачка сигарет, 
+Значит все не так уж плохо на сегодняшний день.
+И билет на самолет с серебристым крылом, 
+Что, взлетая, оставляет земле лишь тень.
+
+Но если есть в кармане пачка сигарет, 
+Значит все не так уж плохо на сегодняшний день.
+И билет на самолет с серебристым крылом, 
+Что, взлетая, оставляет земле лишь тень.
+"""],
+
+
+
+["Linkin Park","Numb(Radio Tapok cover)",
+ """Я устал быть другим для себя
+Утратив веру, и свой потеряв путь
+Что мне сделать еще для тебя?
+Я словно под прессом, и на краю стою
+(Да я попал в капкан, я снова попал в капкан)
+В каждом следующем шаге - найдешь лишь вину мою
+(Да я попал в капкан, я снова попал в капкан)
+
+Я застрял в себе, и всё свёл на нет,
+Но я нашел, где-то там ответ
+Выходя из тьмы, просто став собой, 
+Перестав быть тем, кем я был с тобой
+ 
+Ты же видишь, что душишь меня
+Крепко держа, боясь потерять контроль
+Да, я знаю, что это любя
+Стать тем, кем ты хочешь, но на краю стою
+(Да я попал в капкан, я снова попал в капкан)
+Даже в следующем шаге найдешь лишь вину мою
+(Да я попал в капкан, я снова попал в капкан)
+Тратя время на то, что меня разорвёт
+
+Я застрял в себе, и всё свёл на нет,
+Но я нашел, где то там ответ
+Выходя из тьмы, просто став собой, 
+Перестав быть тем, кем я был с тобой
+
+И я знал, 
+Что мог стать тем, кем хотел
+Но я знал, также, что тебя кто-то в свое время тоже терпел
+
+Я застрял в себе, и всё свёл на нет,
+Но я нашел, где то там ответ
+Выходя из тьмы, просто став собой, 
+Перестав быть тем, кем я был с тобой
+
+Я застрял в себе, и всё свёл на нет
+(Я устал быть другим для себя)
+ Я застрял в себе, и всё свёл на нет
+(Я устал быть другим для себя)"""],
+
+
+
+["System Of A Down","Lonely day",
+ """Such a lonely day
+And it's mine
+The most loneliest day of my life
+
+Such a lonely day
+Should be banned
+It's a day that I can't stand
+
+The most loneliest day of my life
+The most loneliest day of my life
+
+Such a lonely day
+Shouldn't exist
+It's a day that I'll never miss
+Such a lonely day
+And it's mine
+The most loneliest day of my life
+
+And if you go, I wanna go with you
+And if you die, I wanna die with you
+
+Take your hand and walk away
+
+The most loneliest day of my life
+The most loneliest day of my life
+The most loneliest day of my life
+Life
+
+Such a lonely day
+And it's mine
+It's a day that I'm glad I survived"""],
+
+
+
+["System Of A Down","Lonely Day(Radio Tapok cover)",
+ """Одинокий день
+И он мой
+Самый печальный день, что был со мной
+
+Одинокий день
+Он настал
+Господи, как я устал
+
+Самый печальный день, что был со мной
+Самый печальный день, что был со мной
+
+Одинокий день
+Уходи
+Нет, я не буду грустить
+
+Одинокий день
+И он мой
+Самый печальный день, что был со мной
+
+Если уйдешь, то я уйду с тобой
+Если умрешь, то я умру с тобой
+Обниму и выйдем прочь
+
+Самый печальный день, что был со мной
+Самый печальный день, что был со мной
+Самый печальный день, что был со мной
+
+Одинокий день
+И он мой
+В этот день, я остался живой.
+"""],
+
+
+
+["Imagine Dragons","Demons",
+ """When the days are cold
+And the cards all fold
+And the saints we see
+Are all made of gold
+
+When your dreams all fail
+And the ones we hail
+Are the worst of all
+And the blood's run stale
+
+I wanna hide the truth
+I wanna shelter you
+But with the beast inside
+There's nowhere we can hide
+
+No matter what we breed
+We still are made of greed
+This is my kingdom come
+This is my kingdom come
+
+When you feel my heat
+Look into my eyes
+It's where my demons hide
+It's where my demons hide
+Don't get too close
+It's dark inside
+It's where my demons hide
+It's where my demons hide
+
+At the curtain's call
+It's the last of all
+When the lights fade out
+All the sinners crawl
+
+So they dug your grave
+And the masquerade
+Will come calling out
+At the mess you made
+
+Don't wanna let you down
+But I am hell bound
+Though this is all for you
+Don't wanna hide the truth
+
+No matter what we breed
+We still are made of greed
+This is my kingdom come
+This is my kingdom come
+
+When you feel my heat
+Look into my eyes
+It's where my demons hide
+It's where my demons hide
+Don't get too close
+It's dark inside
+It's where my demons hide
+It's where my demons hide
+
+They say it's what you make
+I say it's up to fate
+It's woven in my soul
+I need to let you go
+
+Your eyes, they shine so bright
+I wanna save that light
+I can't escape this now
+Unless you show me how
+
+When you feel my heat
+Look into my eyes
+It's where my demons hide
+It's where my demons hide
+Don't get too close
+It's dark inside
+It's where my demons hide
+It's where my demons hide"""],
+
+
+
+["Nirvana","Smells like teen spirit",
+ """Load up on guns, bring your friends
+It's fun to lose and to pretend
+She's over bored and self assured
+Oh no, I know a dirty word
+
+Hello, hello, hello, how low? [x3]
+Hello, hello, hello!
+
+With the lights out, it's less dangerous
+Here we are now, entertain us
+I feel stupid and contagious
+Here we are now, entertain us
+A mulatto
+An albino
+A mosquito
+My libido
+Yeah, hey, yay
+
+I'm worse at what I do best
+And for this gift I feel blessed
+Our little group has always been
+And always will until the end
+
+Hello, hello, hello, how low? [x3]
+Hello, hello, hello!
+
+With the lights out, it's less dangerous
+Here we are now, entertain us
+I feel stupid and contagious
+Here we are now, entertain us
+A mulatto
+An albino
+A mosquito
+My libido
+Yeah, hey, yay
+
+And I forget just why I taste
+Oh yeah, I guess it makes me smile
+I found it hard, it's hard to find
+Oh well, whatever, never mind
+
+Hello, hello, hello, how low? [x3]
+Hello, hello, hello!
+
+With the lights out, it's less dangerous
+Here we are now, entertain us
+I feel stupid and contagious
+Here we are now, entertain us
+A mulatto
+An albino
+A mosquito
+My libido
+
+A denial! [x9]"""],
+
+
+
+["Nirvana","Smells like teen spirit(Музыкант вещает cover)",
+ """Возьми ружьё,
+Зови друзей,
+На виски денег не жалей,
+И приходи сегодня к нам пришла пора напиться в хлам,
+
+Припев*
+Привет привет,
+Лови момент,
+Привет привет,
+Лови момент , 
+Привет привет, 
+Лови момент ,
+Привет привет привет...
+
+В темноте нам - интересней,
+Звон стаканов-станет песней ,
+Эта глупасть- так заразна ,
+Развлекай нас- что не ясно??
+Бьем посуду ,телевизор,
+А потом со-седей снизу 
+
+(Еее--------хей-----------------хей-----------)
+(Маленький проигрыш)
+
+2 куплет .
+Из лучших худших-это я ,
+И эти пьяные друзья,
+У нас профессия -дебош
+Компаний лучше не найдешь
+
+Припев.
+
+3 куплет
+Я забывают что к чему ,
+Мой ум купается в дыму
+Нас утром будет не поднять но нам на это наплевать,
+
+Припев )2 раза
+
+Отрекаюсь!
+Отрекаюсь!
+Отрекаюсь!
+Отрекаюсь!
+Отрекаюсь!
+Отрекаюсь!
+Отрекаюсь!
+Отрекаюсь!
+Отрекаюсь!
+Отрекаююююююююссссссьььь!!!!!"""],
+
+
+
+["Народ","Житомир",
+ """А це було в сільскому клубі,
+де вишивали чуваки,
+дівчата лускали насіння,
+а хлопці гнули матюки.
+
+Ми познайомились на танцях,
+а ти була в рожевих штанцях,
+тебе я сразу покохав,
+бо в тебе лівчик виглядав.
+
+А ми їбалися на криші,
+в 40-градусний мороз,
+твоя пізда покрилась льодом,
+мій хуй встрічав дід мороз.
+
+А ми лежим на купі гною,
+а я милуюся тобою,
+на тобі пляттячко рябе,
+мабуть я виїбу тебе.
+
+О-о-о, Житомир, це не місто не село,
+О-о-о, Житомир, куди нас нахуй занесло.
+
+А на Житомирськом вокзалі,
+обвалився потолок,
+Бабу Нюру придавило, 
+аж з пізди пішов димок.
+
+А на Житомирськом вокзалі,
+кугути автобус ждали,
+хто з лопатой, хто з мішком,
+усі попиздили пішком.
+
+А це було біля вокзалу,
+де пролітав аероплан,
+усі їбальніки задерли,
+а я спиздив чемодан.
+
+А це було біля вокзалу,
+де задавили мурав'я,
+цілий місяць м'ясо їли,
+да ще осталось дохуя.
+
+О-о-о, Житомир, це не місто не село,
+О-о-о, Житомир, куди нас нахуй занесло.
+
+А очеретом хата вкрита,
+а до двере пизда прибита,
+а хто і їде, хто і йде,
+туди копіючку кладе.
+
+А ішов батько, ішов я,
+да не поклали ніхуя,
+батько прямо, а я в бік,
+батька пиздять, а я втік.
+
+А я біжу по кукурузі,
+а качани по яйцям б'ють,
+а зупинитися не можу,
+бо доженуть, пизди дадуть
+
+О-о-о, Житомир, це не місто не село,
+О-о-о, Житомир, куди нас нахуй занесло.
+
+А тётя Рая, тётя Рая,
+а вам посилка із Шанхая,
+а в посилке три китайця,
+і дружно дєржуться за ящик.
+
+А на рєкє качався буй,
+к нему пливёт какой-то дядя,
+дядя-дядя не валуй,
+а то дєльфін откусит ногу.
+
+А то ведь вовсе был не буй,
+а то ведь вовсе был не буй,
+а то ведь вовсе был не буй,
+а от кита огромный хвост.
+
+На бэрегу лежат 2 трупа,
+на бэрегу лежат 2 трупа,
+у одного из-под улупа,
+лежит огромная... Збер-книжка.
+
+Себя от голода страхуя,
+зашли в кабак 4 дяди,
+у одного из-под улупа,
+торчала конская... Узда.
+
+А хрестьянин торжествуя,
+б'ёт коня за кончик... Уха.
+ему на встречу идёт старуха,
+ведёт быка за тоже ухо.
+
+Пошёл в аптеку Дед Антон,
+что бы купить себе... Таблетки,
+а у него из-под улупа,
+торчала красная... Рубашка.
+
+Какой-то маленький вассал,
+все стенки замка обошёл,
+но нечего там не нашёл,
+он к секретарше подошёл.
+
+А тётя Валя, тётя мать,
+ведь вы порядочная... Тётя,
+вы мне скажите где живёте,
+и я приййду к вам ночевать
+
+О-о-о, Житомир, це не місто не село,
+О-о-о, Житомир, куди нас нахуй занесло."""],
+
+
+
+["Скрябін","Старі фотографії",
+ """Здається, шо то було так давно,
+Коли в руках тримаю цей альбом,
+Нам було абсолютно все одно
+Немаючи нічого мати всьо,
+За гроші не купити тільки час,
+Він всіх нас методично поділив,
+Когось він опустив, когось підняв,
+А є на кого взагалі забив.
+
+Приспів:
+Старі фотографії на стіл розклади,
+Дитячі історії смішні розкажи
+І справжнім друзям не забудь, подзвони
+Бо добре чи зле, з тобою завжди вони
+
+Дешеве пиво і сухе вино,
+Робили нас щасливими людьми,
+І ніби чудо польське радіо,
+Нам відкривало той незнаний світ
+
+Ми жили всі так ніби, то був сон
+І можна бути вічно молодим,
+А залишився тільки цей альбом,
+А мрії розлетілися, як дим.
+
+Приспів.
+
+Ми грали примітивну музику,
+Так чесно, що пробила би до сліз
+Чекали, що прийде такий момент
+Коли під ноги впаде цілий світ
+Годинник вперто роки рахував,
+І кожен так як міг так і зробив
+І тільки у альбомі всі підряд
+Ми будемо такими, як тоді
+
+Приспів (2)"""]
+
+
+
+#["","",""""""]
+
+
+
+#["","",""""""]
+
+
+
+#["","",""""""]
+
+
+
+#["","",""""""]
+
+
+
+#["","",""""""]
 
 
 

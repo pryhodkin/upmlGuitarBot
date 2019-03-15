@@ -347,12 +347,41 @@ def SongsMarkup(mass):
 ###############################################################################################################
 ###############################################################################################################
 
-"""def FindSong(mass, str):
+def ToLines(str):
+    Lines =[]
+    g = ''
+    for i in str:
+        if i == '\n':
+            Lines.append(g)
+            g = ''
+        else:
+            g += i
+    return Lines
+
+def ReadSongs(file):
+    music_array = [['artist', 'song', 'lyrics']]
+    CheckFPart = False
+    CheckSPart = False
+    lines = ToLines(file.read())
     i = 0
-    artist = Sub(str)[0]
-    song = Sub(str)[1]
-    songs = []
-    while i < Count(mass):
-        if mass[i][0] == artist:
-            songs.append(mass[i])
-        i += 1"""
+    j = 0
+    lyrics = ''
+    while i < Count(lines):
+        if lines[i] == '##':
+            CheckFPart = True
+        elif CheckFPart:
+            ArtistSong = Sub(lines[i])
+            music_array.append([ArtistSong[0], ArtistSong[1]])
+            j += 1
+            CheckFPart = False
+        if lines[i] == '#':
+            CheckSPart = True
+        elif CheckSPart:
+            lyrics = lyrics + lines[i] + '\n'
+        if i + 1 < Count(lines):
+            if lines[i + 1] == '##':
+                music_array[j].append(lyrics)
+                CheckSPart = False
+                lyrics = ''
+        i += 1
+    return music_array
