@@ -302,7 +302,7 @@ def SortMusic(mass):
 
         while i < k:
 
-            if mass[i + 1][0] < mass[i][0] or mass[i + 1][0] == mass[i][0] and mass[i + 1][1] < mass[i][1]:
+            if mass[i + 1][0] < mass[i][0] or (mass[i + 1][0] == mass[i][0] and mass[i + 1][1] < mass[i][1]):
                 exchange(mass, i + 1, i)
 
             i += 1
@@ -385,3 +385,13 @@ def ReadSongs(file):
                 lyrics = ''
         i += 1
     return music_array
+
+
+def ArrayAward(taker, giver):
+    i = 0
+    while i < Count(giver):
+        if i >= Count(taker):
+            taker.append(giver[i])
+        else:
+            taker[i] = giver[i]
+        i += 1

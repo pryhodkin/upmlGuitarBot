@@ -12,9 +12,11 @@ hide_markup = telebot.types.ReplyKeyboardRemove()
 
 artist_markups = functions.SetMarkupArtists(functions.Artists(constants.music_array))
 
-songs = functions.Shaker(constants.music_array, 1)
+songs = []
 
+functions.ArrayAward(songs, functions.Shaker(constants.music_array, 1))
 
+functions.SortMusic(constants.music_array)
 
 
 """
