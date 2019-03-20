@@ -1,7 +1,3 @@
-author - song
-#
-lyrics
-##
 The White Stripes - Seven nation army
 #
 I'm gonna fight 'em all
@@ -130,50 +126,50 @@ I walk a lonely road
  The only one that I have ever known
  Don't know where it goes
  But it's only me, and I walk alone
- 
+
  I walk this empty street
  On the boulevard of broken dreams
  Where the city sleeps
  And I'm the only one, and I walk alone
- 
+
  I walk alone, I walk alone
  I walk alone and I walk a
- 
+
  My shadow's the only one that walks beside me
  My shallow heart's the only thing that's beating
  Sometimes I wish someone out there will find me
  Till then I walk alone
- 
+
  Ah ah ah ah ah
  Ah ah ah ah ah
- 
+
  I'm walking down the line
  That divides me somewhere in my mind
  On the border line of the edge
  And where I walk alone
- 
+
  Read between the lines
  What's fucked up and every thing's all right
  Check my vital signs to know I'm still alive
  And I walk alone
- 
+
  I walk alone, I walk alone
  I walk alone and I walk a
- 
+
  My shadow's the only one that walks beside me
  My shallow heart's the only thing that's beating
  Sometimes I wish someone out there will find me
  Till then I walk alone
- 
+
  Ah ah ah ah ah
  Ah ah ah ah ah
  I walk alone, I walk a
- 
+
  I walk this empty street
  On the boulevard of broken dreams
  Where the city sleeps
  And I'm the only one, and I walk alone
- 
+
  My shadow's the only one that walks beside me
  My shallow heart's the only thing that's beating
  Sometimes I wish someone out there will find me
@@ -337,7 +333,7 @@ Hе являлось под кайфом, не стучалось в стекл�
 Люмен - А мы не ангелы, парень
 #
 Ты открывал ночь
-Все что могли позволить 
+Все что могли позволить
 Маски срывал прочь
 Душу держал в неволе.
 Пусть на щеке кровь
@@ -803,17 +799,17 @@ Soldier
 #
 Тихо лужи покрывает лед, помнишь мы с тобою
 Целовались ночи напролет под шум прибоя
-Это лето не вернуть уже я знаю 
-Но когда печаль в моей душе я вспоминаю: 
+Это лето не вернуть уже я знаю
+Но когда печаль в моей душе я вспоминаю:
 
 Припев:
 Яхта, парус, в это мире только мы одни.
 Ялта, август и мы с тобою влюблены.
 Яхта, парус, в это мире только мы одни.
-Ялта, август и мы с тобою влюблены. 
+Ялта, август и мы с тобою влюблены.
 
 Но расстаться нам с тобой пришлось кончилась путевка
-И вагон плацкартный меня нес в Новую Каховку 
+И вагон плацкартный меня нес в Новую Каховку
 Не забуду ночи при луне и твою улыбку
 Ты открытку подарила мне, а на той открытке:
 
@@ -1311,80 +1307,6 @@ Hey, Jude [fade out]
 Районы, кварталы, жилые массивы,
 Я ухожу, ухожу красиво.
 ##
-Imagine Dragons - Believer
-#
-First things first
-I'mma say all the words inside my head
-I'm fired up and tired of the way that things have been, oh ooh
-The way that things have been, oh ooh
-
-Second things second
-Don't you tell me what you think that I could be
-I'm the one at the sail, I'm the master of my sea, oh ooh
-The master of my sea, oh ooh
-
-I was broken from a young age
-Taking my sulking to the masses
-Writing my poems for the few
-That look at me, took to me, shook to me, feeling me
-Singing from heartache from the pain
-Taking my message from the veins
-Speaking my lesson from the brain
-Seeing the beauty through the...
-
-Pain!
-You made me a, you made me a believer, believer
-Pain!
-You break me down, you build me up, believer, believer
-Pain!
-Oh let the bullets fly, oh let them rain
-My life, my love, my drive, it came from...
-Pain!
-You made me a, you made me a believer, believer
-
-Third things third
-Send a prayer to the ones up above
-All the hate that you've heard has turned your spirit to a dove, oh ooh
-Your spirit up above, oh ooh
-
-I was choking in the crowd
-Building my rain up in the cloud
-Falling like ashes to the ground
-Hoping my feelings, they would drown
-But they never did, ever lived, ebbing and flowing
-Inhibited, limited
-Till it broke open and rained down
-And rained down, like...
-
-Pain!
-You made me a, you made me a believer, believer
-Pain!
-You break me down, you build me up, believer, believer
-Pain!
-Oh let the bullets fly, oh let them rain
-My life, my love, my drive, it came from...
-Pain!
-You made me a, you made me a believer, believer
-
-Last things last
-By the grace of the fire and the flames
-You're the face of the future, the blood in my veins, oh ooh
-The blood in my veins, oh ooh
-But they never did, ever lived, ebbing and flowing
-Inhibited, limited
-Till it broke open and rained down
-And rained down, like...
-
-Pain!
-You made me a, you made me a believer, believer
-Pain!
-You break me down, you build me up, believer, believer
-Pain!
-Oh let the bullets fly, oh let them rain
-My life, my love, my drive, it came from...
-Pain!
-You made me a, you made me a believer, believer
-##
 Океан Ельзи - Без бою
 #
 Що ж це я
@@ -1629,29 +1551,29 @@ Wit it 1, 2, 3, 4
 #
 Я сижу и смотрю в чужое небо из чужого окна
 И не вижу ни одной знакомой звезды.
-Я ходил по всем дорогам и туда, и сюда, 
+Я ходил по всем дорогам и туда, и сюда,
 Обернулся - и не смог разглядеть следы.
 
 Припев:
-Но если есть в кармане пачка сигарет, 
+Но если есть в кармане пачка сигарет,
 Значит все не так уж плохо на сегодняшний день.
-И билет на самолет с серебристым крылом, 
+И билет на самолет с серебристым крылом,
 Что, взлетая, оставляет земле лишь тень.
 
-И никто не хотел быть виноватым без вина, 
+И никто не хотел быть виноватым без вина,
 И никто не хотел руками жар загребать,
-А без музыки на миру смерть не красна, 
+А без музыки на миру смерть не красна,
 А без музыки не хочется пропадать.
 
 Припев:
-Но если есть в кармане пачка сигарет, 
+Но если есть в кармане пачка сигарет,
 Значит все не так уж плохо на сегодняшний день.
-И билет на самолет с серебристым крылом, 
+И билет на самолет с серебристым крылом,
 Что, взлетая, оставляет земле лишь тень.
 
-Но если есть в кармане пачка сигарет, 
+Но если есть в кармане пачка сигарет,
 Значит все не так уж плохо на сегодняшний день.
-И билет на самолет с серебристым крылом, 
+И билет на самолет с серебристым крылом,
 Что, взлетая, оставляет земле лишь тень.
 
 ##
@@ -1667,9 +1589,9 @@ Linkin Park - Numb(Radio Tapok cover)
 
 Я застрял в себе, и всё свёл на нет,
 Но я нашел, где-то там ответ
-Выходя из тьмы, просто став собой, 
+Выходя из тьмы, просто став собой,
 Перестав быть тем, кем я был с тобой
- 
+
 Ты же видишь, что душишь меня
 Крепко держа, боясь потерять контроль
 Да, я знаю, что это любя
@@ -1681,16 +1603,16 @@ Linkin Park - Numb(Radio Tapok cover)
 
 Я застрял в себе, и всё свёл на нет,
 Но я нашел, где то там ответ
-Выходя из тьмы, просто став собой, 
+Выходя из тьмы, просто став собой,
 Перестав быть тем, кем я был с тобой
 
-И я знал, 
+И я знал,
 Что мог стать тем, кем хотел
 Но я знал, также, что тебя кто-то в свое время тоже терпел
 
 Я застрял в себе, и всё свёл на нет,
 Но я нашел, где то там ответ
-Выходя из тьмы, просто став собой, 
+Выходя из тьмы, просто став собой,
 Перестав быть тем, кем я был с тобой
 
 Я застрял в себе, и всё свёл на нет
@@ -1913,8 +1835,8 @@ Nirvana - Smells like teen spirit(Музыкант вещает cover)
 Привет привет,
 Лови момент,
 Привет привет,
-Лови момент , 
-Привет привет, 
+Лови момент ,
+Привет привет,
 Лови момент ,
 Привет привет привет...
 
@@ -1923,7 +1845,7 @@ Nirvana - Smells like teen spirit(Музыкант вещает cover)
 Эта глупасть- так заразна ,
 Развлекай нас- что не ясно??
 Бьем посуду ,телевизор,
-А потом со-седей снизу 
+А потом со-седей снизу
 
 (Еее--------хей-----------------хей-----------)
 (Маленький проигрыш)
@@ -1981,7 +1903,7 @@ Nirvana - Smells like teen spirit(Музыкант вещает cover)
 
 А на Житомирськом вокзалі,
 обвалився потолок,
-Бабу Нюру придавило, 
+Бабу Нюру придавило,
 аж з пізди пішов димок.
 
 А на Житомирськом вокзалі,

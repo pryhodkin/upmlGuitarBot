@@ -284,13 +284,7 @@ def handle_text(message):
 
                     bot.send_message(message.from_user.id, 'Всё, удолил песню: \n' + functions.Sub(message.text)[0] + ' - ' + functions.Sub(message.text)[1])
 
-                    SongsFile = open('DataBase/SongsFile.txt', 'rt', encoding='utf_8')
-
-                    functions.ArrayAward(songs, functions.ReadSongs(SongsFile))
-
-                    functions.SortMusic(songs)
-
-                    SongsFile.close()
+                    songs.remove(songs[i])
 
                 i += 1
 

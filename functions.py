@@ -409,7 +409,13 @@ def ReadSongs(file):
 
         elif CheckSPart:
 
-            lyrics = lyrics + lines[i] + '\n'
+            if i + 1 < Count(lines) and lines[i + 1] == '##':
+
+                lyrics = lyrics + lines[i]
+
+            else:
+
+                lyrics = lyrics + lines[i] + '\n'
 
         if i + 1 < Count(lines):
 
