@@ -282,7 +282,7 @@ def handle_text(message):
 
                     functions.DelSong(functions.Sub(message.text)[0], functions.Sub(message.text)[1])
 
-                    bot.send_message(message.from_user.id, 'Всё, удолил песню: \n' + functions.Sub(message.text)[0] + functions.Sub(message.text)[1])
+                    bot.send_message(message.from_user.id, 'Всё, удолил песню: \n' + functions.Sub(message.text)[0] + ' - ' + functions.Sub(message.text)[1])
 
                     SongsFile = open('DataBase/SongsFile.txt', 'rt', encoding='utf_8')
 
