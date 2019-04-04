@@ -1,573 +1,857 @@
+import psycopg2
 import telebot
 import random
-import array
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
 
 
-def Count(mass):
+class Database:
 
-    n = 0
+    def __init__(self, connection):
 
-    for x in mass:
+        self.connection = connection
 
-        n += 1
+        cursor = connection.cursor()
 
-    return n
+        cursor.execute("""
+        
+                SELECT table_name
+                FROM information_schema.tables
+                WHERE table_schema NOT IN ('information_schema','pg_catalog');
+                
+                """)
+        tables = []
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+        for table in cursor:
 
-def FindSongs(mass, artist):
+            tables.append(table[0])
 
-    songs = []
+        cursor.close()
 
-    for x in mass:
+        self.tables = tables
 
-        if x[0] == artist:
+    def ToStringValue(self, list):
 
-            songs.append(x[1])
+        result = ''
 
-    return songs
+        i = 0
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+        while i < len(list):
 
-def SetMarkup(mass, artist):
+            if type(list[i]) == type(str(list[i])) or list[i] == None:
 
-    markup = telebot.types.ReplyKeyboardMarkup(True, False)
-
-    i = 0
-
-    markup.row('Исполнители','✖')
-
-    while i < Count(FindSongs(mass, artist)):
-
-        if i + 1 < Count(FindSongs(mass, artist)):
-
-            markup.row(FindSongs(mass, artist)[i], FindSongs(mass, artist)[i + 1])
-
-        else:
-
-            markup.row(FindSongs(mass, artist)[i])
-
-        i += 2
-
-    return markup
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-"""def SetMarkupArtists(mass):
-
-    ###find all artists
-
-    i = 1
-
-    artists = []
-
-    while i < Count(mass):
-
-        j = 0
-
-        while j < Count(artists):
-
-            if mass[i][0] != artists[j]:
-
-                check = True
+                result += "'" + str(list[i]) + "'"
 
             else:
 
-                check = False
+                result += str(list[i])
 
-                break
+            if i != len(list) - 1:
 
-            j += 1
-
-        if check:
-
-            artists.append(mass[i][0])
-
-        i += 1
-
-    ###fill_up
-
-    markup = []
-
-    i = 0
-
-    while i < Count(artists):
-
-        j = 1
-
-        markup.append([artists[i]])
-
-        while j <= FindSongs(mass, artists[i]):
-
-            markup[i].append(FindSongs(mass, artists[i])[j])
-
-            j += 1
-
-    i += 1
-
-    return markup
-"""
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-def Artists(mass):
-
-    i = 1
-
-    artists = []
-
-    while i < Count(mass):
-
-        j = 0
-
-        while j < Count(artists):
-
-            if mass[i][0] == artists[j]:
-
-                break
-
-            j += 1
-
-        if j == Count(artists):
-
-            artists.append(mass[i][0])
-
-        i += 1
-
-    return artists
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-def SetMarkupArtists(artists):
-
-    markup = telebot.types.ReplyKeyboardMarkup(True, False)
-
-    i = 0
-
-    markup.row('✖')
-
-    while i < Count(artists):
-
-        markup.row(artists[i])
-
-        i += 1
-
-    return markup
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-def Check(mass, el):
-
-    i = 0
-
-    check = False
-
-    while i < Count(mass):
-
-        if mass[i] == el:
-
-            check = True
-
-        i += 1
-
-    return check
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-
-def exchange(mass, n, m):
-
-    k = mass[n]
-
-    mass[n] = mass[m]
-
-    mass[m] = k
-
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-def Shaker(mass, key):
-
-        u = 1
-
-        k = Count(mass) - 1;
-
-        j = 1
-
-        while j < Count(mass):
-
-            i = u
-
-            while i < k:
-
-                if mass[i + 1][key] < mass[i][key]:
-
-                    exchange(mass, i + 1, i)
-
-                i += 1
-
-            k -= 1
-
-            i = k - 1
-
-            while i >= u:
-
-                if mass[i + 1][key] < mass[i][key]:
-
-                    exchange(mass, i + 1, i)
-
-                i -= 1
-
-            u += 1
-
-            j += 1
-
-        return mass
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-
-def Substring(str, i, n):
-
-    substring = ''
-
-    j = 0
-
-    while j + i < n and j + i < Count(str):
-
-        substring += str[j + i]
-
-        j += 1
-
-    return substring
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-
-def Sub(str):
-
-    i = 0
-
-    sub = ['','']
-
-    while i < Count(str) and str[i] != '-':
-
-        i += 1
-
-    sub[0] = Substring(str, 0, i - 1)
-
-    sub[1] = Substring(str, i + 2, Count(str))
-
-    return sub
-
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-def SortMusic(mass):
-
-    u = 1
-
-    k = Count(mass) - 1;
-
-    j = 1
-
-    while j < Count(mass):
-
-        i = u
-
-        while i < k:
-
-            if mass[i + 1][0] < mass[i][0] or (mass[i + 1][0] == mass[i][0] and mass[i + 1][1] < mass[i][1]):
-
-                exchange(mass, i + 1, i)
+                result += ','
 
             i += 1
 
-        k -= 1
+        return result
 
-        i = k - 1
+    def ToStringColumns(self, list):
 
-        while i >= u:
+        result = ''
 
-            if mass[i + 1][0] < mass[i][0] or (mass[i + 1][0] == mass[i][0] and mass[i + 1][1] < mass[i][1]):
+        i = 0
 
-                exchange(mass, i + 1, i)
+        while i < len(list):
 
-            i -= 1
+            result += str(list[i])
 
-        u += 1
+            if i != len(list) - 1:
 
-        j += 1
+                result += ','
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+            i += 1
 
-def SongsMarkup(mass):
+        return result
 
-    markup = telebot.types.ReplyKeyboardMarkup(True, False)
+    def ToSQLString(self, string):
 
-    i = 1
+        result = ''
 
-    markup.row('Исполнители','✖')
+        i = 0
 
-    while i < Count(mass):
+        while i < len(string):
 
-        markup.row(mass[i][0] + ' - ' + mass[i][1])
+            if string[i] == "'":
 
-        i += 1
+                result += "'"
 
-    return markup
+            result += string[i]
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+            i += 1
 
-def ToLines(str):
+        return result
 
-    Lines =[]
+    def CleanTable(self, table):
 
-    g = ''
+        cursor = self.connection.cursor()
 
-    for i in str:
+        cursor.execute("DELETE FROM {0};".format(table))
 
-        if i == '\n':
+        self.connection.commit()
 
-            Lines.append(g)
+        cursor.close()
 
-            g = ''
+    def ColumnsList(self, table):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT column_name
+                FROM information_schema.columns
+                WHERE information_schema.columns.table_name='{0}';
+
+        """.format(table))
+
+        columns = []
+
+        for column in cursor:
+
+            columns.append(column[0])
+
+        cursor.close()
+
+        return columns
+
+    def AddToTable(self, table, row):
+
+        cursor = self.connection.cursor()
+
+        columns = self.ToStringColumns(self.ColumnsList(table))
+
+        row = self.ToStringValue(row)
+
+        cursor.execute("""
+
+            INSERT INTO {table}({columns})
+            VALUES({row});
+
+            """.format(table=table, columns=columns, row=row))
+
+        self.connection.commit()
+
+        cursor.close()
+
+    def DeleteFromTable(self, table, id):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+
+                DELETE FROM {table}
+                WHERE Id = {id};
+
+        """.format(table=table, id=id))
+
+        self.connection.commit()
+
+        cursor.close()
+
+    def ToListCursor(self, cursor):
+
+        result = []
+
+        for row in cursor:
+
+            result.append(row)
+
+        return result
+
+    def CheckExistUser(self, id):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT id
+                FROM Users
+                WHERE id = {id};
+
+        """.format(id=id))
+
+        n = 0
+
+        for row in cursor:
+
+            n += 1
+
+        cursor.close()
+
+        if n == 0:
+
+            return False
 
         else:
 
-            g += i
+            return True
 
-    return Lines
+    def User(self, id):
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+        cursor = self.connection.cursor()
 
-def ReadSongs(file):
+        cursor.execute("""
+        
+                SELECT id, First_Name, Last_Name, Username, Admin, Creator, Condition
+                FROM users
+                WHERE id = {id};
+        
+        """.format(id = id))
 
-    music_array = [['artist', 'song', 'lyrics']]
+        user = self.ToListCursor(cursor)
 
-    CheckFPart = False
+        cursor.close()
 
-    CheckSPart = False
+        result = User(user[0][0], user[0][1], user[0][2], user[0][3], user[0][6], user[0][4], user[0][5])
 
-    lines = ToLines(file.read())
+        return result
 
-    i = 0
+    def ChangeCondition(self, id, condition):
 
-    j = 0
+        cursor = self.connection.cursor()
 
-    lyrics = ''
+        cursor.execute("""
+        
+                UPDATE users
+                SET condition = '{condition}'
+                WHERE id = {id};
+        
+        """.format(condition = condition, id = id))
 
-    while i < Count(lines):
+        self.connection.commit()
 
-        if lines[i] == '##':
+        cursor.close()
 
-            CheckFPart = True
+    def CheckKey(self, key):
 
-        elif CheckFPart:
+        cursor = self.connection.cursor()
 
-            ArtistSong = Sub(lines[i])
+        cursor.execute("""
+        
+                SELECT *
+                FROM adminkeys;
+        
+        """)
 
-            music_array.append([ArtistSong[0], ArtistSong[1]])
+        for row in cursor:
 
-            j += 1
+            if str(row[0]) == key:
 
-            CheckFPart = False
+                cursor.close()
 
-        if lines[i] == '#':
+                return True
 
-            CheckSPart = True
+        cursor.close()
 
-        elif CheckSPart:
+        return False
 
-            if i + 1 < Count(lines) and lines[i + 1] == '##':
+    def DeleteKey(self, key):
 
-                lyrics = lyrics + lines[i]
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+        
+                DELETE FROM adminkeys
+                WHERE key = {key};
+        
+        """.format(key = key))
+
+        self.connection.commit()
+
+        cursor.close()
+
+    def AddAdmin(self, id):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+        
+                UPDATE users
+                SET Admin = TRUE
+                WHERE id = {id};
+        
+        """.format(id = id))
+
+        self.connection.commit()
+
+        cursor.close()
+
+    def FindSong(self, table, artist, song):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+        
+                SELECT *
+                FROM {table}
+                WHERE artist = '{artist}' AND song = '{song}';
+        
+        """.format(table = table, artist = artist, song = song))
+
+        song_list = self.ToListCursor(cursor)
+
+        return song_list[0][2]
+
+    def SongExist(self, artist, song, table):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT *
+                FROM {table}
+                WHERE artist = '{artist}' AND song = '{song}';
+
+        """.format(table = table, artist = artist, song = song))
+
+        for row in cursor:
+
+            return True
+
+        cursor.close()
+
+        return False
+
+    def RequestsNumber(self):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+        
+                SELECT count(*)
+                FROM adminrequests
+                WHERE answered = False;
+                
+        """)
+
+        result = self.ToListCursor(cursor)[0][0]
+
+        cursor.close()
+
+        return result
+
+    def RequestExist(self, id):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+        
+                SELECT *
+                FROM adminrequests
+                WHERE id = {id};
+        
+        """.format(id = id))
+
+        if len(self.ToListCursor(cursor)) == 0:
+
+            cursor.close()
+
+            return False
+
+        else:
+
+            cursor.close()
+
+            return True
+        
+    def Requests(self):
+        
+        cursor = self.connection.cursor()
+        
+        cursor.execute("""
+        
+                SELECT *
+                FROM users
+                WHERE id IN (SELECT id FROM adminrequests WHERE answered = False)
+        
+        """)
+        
+        result = [ '', [] ]
+
+        users_list = self.ToListCursor(cursor)
+
+        cursor.close()
+
+        users = []
+
+        for user in users_list:
+
+            users.append(self.User(user[0]))
+
+        n = 0
+
+        for user in users:
+
+            n += 1
+
+            result[0] +=  "#Номер: {n}\n"\
+                       "#Имя: {first_name}\n"\
+                       "#Фамилия: {last_name}\n"\
+                       "#Username: {username}\n"\
+                       "#Id: {id}\n\n".format(n = n, first_name = user.first_name, last_name = user.last_name, username = user.username, id = user.id)
+
+            result[1].append(user.id)
+
+        return result
+
+    def RequestAnswer(self, id, answer):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT *
+                FROM adminrequests
+                WHERE answered = False AND id = {id};
+
+        """.format(id = id))
+
+        requests = self.ToListCursor(cursor)
+
+        for row in requests:
+
+            cursor.execute("""
+                
+                    UPDATE adminrequests
+                    SET answered = True, answer = {answer}
+                    WHERE id = {id};
+                
+            """.format(answer = answer, id = row[0]))
+
+            if answer:
+
+                self.AddAdmin(row[0])
+
+        self.connection.commit()
+
+        cursor.close()
+
+    def ChangeSong(self, table, artist, song, content):
+
+        cursor = self.connection.cursor()
+
+        artist = self.ToSQLString(artist)
+        song = self.ToSQLString(song)
+        content = self.ToSQLString(content)
+
+        cursor.execute("""
+        
+                UPDATE {table}
+                SET {table} = '{content}'
+                WHERE artist = '{artist}' AND song = '{song}';
+        
+        """.format(table = table, artist = artist, song = song, content = content))
+
+        self.connection.commit()
+
+        cursor.close()
+
+    def RemoveSong(self, table, artist, song):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+        
+                DELETE FROM {table}
+                WHERE artist = '{artist}' AND song = '{song}';
+        
+        """.format(table = table, artist = artist, song = song))
+
+        self.connection.commit()
+
+        cursor.close()
+
+    def AdminList(self):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT id
+                FROM users
+                WHERE admin = True
+
+        """)
+
+        result = ['', []]
+
+        users_list = self.ToListCursor(cursor)
+
+        cursor.close()
+
+        users = []
+
+        for user in users_list:
+
+            users.append(self.User(user[0]))
+
+        n = 0
+
+        for user in users:
+
+            n += 1
+
+            result[0] += "#Номер: {n}\n" \
+                         "#Имя: {first_name}\n" \
+                         "#Фамилия: {last_name}\n" \
+                         "#Username: {username}\n" \
+                         "#Id: {id}\n\n".format(n=n, first_name=user.first_name, last_name=user.last_name,
+                                                username=user.username, id=user.id)
+
+            result[1].append(user.id)
+
+        return result
+
+    def UserList(self):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT id
+                FROM users
+
+        """)
+
+        result = ''
+
+        users_list = self.ToListCursor(cursor)
+
+        cursor.close()
+
+        users = []
+
+        for user in users_list:
+
+            users.append(self.User(user[0]))
+
+        for user in users:
+
+            result +=    "#Имя: {first_name}\n" \
+                         "#Фамилия: {last_name}\n" \
+                         "#Username: {username}\n" \
+                         "#Id: {id}\n\n".format(first_name = user.first_name, last_name = user.last_name,
+                                                username = user.username, id = user.id)
+
+        return result
+
+    def RemoveAdmin(self, id):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute("""
+        
+                UPDATE users
+                SET admin = False
+                WHERE id = {id};
+        
+        """.format(id = id))
+
+        self.connection.commit()
+
+        cursor.close()
+
+
+
+
+
+
+class Markup:
+
+    def __init__(self):
+
+        pass
+
+    def Songs(self, database, table):
+
+        markup = telebot.types.ReplyKeyboardMarkup(True, False)
+
+        cursor = database.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT DISTINCT Artist, Song
+                FROM {table}
+                ORDER BY Song, Artist;
+
+        """.format(table=table))
+
+        songs_list = database.ToListCursor(cursor)
+
+        cursor.close()
+
+        markup.row('Исполнители', '/close')
+
+        for row in songs_list:
+
+            markup.row(row[0] + ' — ' + row[1])
+
+        return markup
+
+    def Artists(self, database, table):
+
+        markup = telebot.types.ReplyKeyboardMarkup(True, False)
+
+        cursor = database.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT DISTINCT Artist
+                FROM {table}
+                ORDER BY Artist;
+
+        """.format(table=table))
+
+        artists_list = database.ToListCursor(cursor)
+
+        markup.row('/close')
+
+        for row in artists_list:
+            markup.row(row[0])
+
+        cursor.close()
+
+        return markup
+
+    def Artist(self, database, table, artist):
+
+        markup = telebot.types.ReplyKeyboardMarkup(True, True)
+
+        cursor = database.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT DISTINCT Song FROM {table}
+                WHERE Artist = '{artist}'
+                ORDER BY Song;
+
+        """.format(table=table, artist=artist))
+
+        i = 0
+
+        markup.row('Исполнители', '/close')
+
+        artist_list = database.ToListCursor(cursor)
+
+        while i < len(artist_list):
+
+            if i + 1 < len(artist_list):
+
+                markup.row(artist_list[i][0], artist_list[i + 1][0])
 
             else:
 
-                lyrics = lyrics + lines[i] + '\n'
+                markup.row(artist_list[i][0])
 
-        if i + 1 < Count(lines):
+            i += 2
 
-            if lines[i + 1] == '##':
+        return markup
 
-                music_array[j].append(lyrics)
+    def Confirm(self):
 
-                CheckSPart = False
+        markup = telebot.types.ReplyKeyboardMarkup(True, False)
 
-                lyrics = ''
+        markup.row('Выйти')
 
-        i += 1
+        markup.row('Ввести заново', '#Подтвердить')
 
-    return music_array
+        return markup
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+    def Users(self, database):
 
-def ArrayAward(taker, giver):
+        markup = telebot.types.ReplyKeyboardMarkup(True, True)
 
-    i = 0
+        cursor = database.connection.cursor()
 
-    while i < Count(giver):
+        cursor.execute("""
 
-        if i >= Count(taker):
+                SELECT id, First_Name, Last_Name, Username, Admin
+                FROM Users
 
-            taker.append(giver[i])
+        """)
 
-        else:
+        users_list = database.ToListCursor(cursor)
 
-            taker[i] = giver[i]
+        for row in users_list:
+            markup.row("#Имя: {first_name}\n"
+                       "#Фамилия: {last_name}\n"
+                       "#Username: {username}\n"
+                       "#Id: {id}\n".format(first_name=row[1], last_name=row[2], username=row[3], id=row[0]))
 
-        i += 1
+        cursor.close()
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+        return markup
 
-def WriteSong(file, artist, song, lyrics):
+    def YesNo(self, No, Yes):
 
-    file.write(artist + ' - ' + song + '\n' + '#' + '\n')
+        markup = telebot.types.ReplyKeyboardMarkup(True, True)
 
-    file.write(lyrics + '\n' + '##' + '\n')
+        markup.row(No, Yes)
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+        return markup
 
-def AddAdmin(user_name, chat_id):
+    def AdminRequest(self, id):
 
-    admins = open('DataBase/Admins.txt', 'at', encoding = 'utf_8')
+        markup = telebot.types.ReplyKeyboardMarkup()
 
-    admins.write('#' + str(user_name) + ' - ' + str(chat_id) + '\n')
+        markup.row('{id} — быть админом', '{id} — недостоен')
 
-    admins.close()
+    def AdminRequests(self, database):
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+        markup = telebot.types.ReplyKeyboardMarkup()
+
+        cursor = database.connection.cursor()
+
+        cursor.execute("""
+        
+                SELECT *
+                FROM users
+                WHERE id IN (SELECT id FROM adminrequests WHERE answered = False)
+        
+        """)
+
+        users_list = database.ToListCursor(cursor)
+
+        cursor.close()
+
+        users = []
+
+        for user in users_list:
+
+            users.append(database.User(user[0]))
+
+        for user in users:
+
+            markup.row("#Имя: {first_name}\n"
+                       "#Фамилия: {last_name}\n"
+                       "#Username: {username}\n"
+                       "#Id: {id}\n".format(first_name=user.first_name, last_name=user.last_name, username=user.username, id=user.id))
+
+
+        return markup
+
+    def RequestAnswer(self):
+
+        markup = telebot.types.ReplyKeyboardMarkup(True, True)
+
+        markup.row('Принять запрос','Отклонить запрос')
+
+        return markup
+
+    def Numbers(self, n):
+
+        markup = telebot.types.ReplyKeyboardMarkup(True)
+
+        i = 1
+
+        while i <= n:
+
+            if i + 2 <= n:
+
+                markup.row(str(i), str(i + 1), str(i + 2))
+
+            elif i + 1 <= n:
+
+                markup.row(str(i), str(i + 1))
+
+            else:
+
+                markup.row(str(i))
+
+            i += 3
+
+        return markup
+
+    def RemoveSong(self, database, table):
+
+        markup = telebot.types.ReplyKeyboardMarkup(True, False)
+
+        cursor = database.connection.cursor()
+
+        cursor.execute("""
+
+                SELECT DISTINCT Artist, Song
+                FROM {table}
+                ORDER BY Song, Artist;
+
+        """.format(table=table))
+
+        songs_list = database.ToListCursor(cursor)
+
+        cursor.close()
+
+        markup.row('Всё, выбрал')
+
+        for row in songs_list:
+
+            markup.row(row[0] + ' — ' + row[1])
+
+        return markup
+
+    def ConfirmRemoveAdmin(self):
+
+        markup = telebot.types.ReplyKeyboardMarkup(True, True)
+
+        markup.row('Выйти')
+
+        markup.row('Выбрать заново', 'Баааааннннннн')
+
+        return markup
+
+
+
+
+class User:
+
+    def __init__(self, id, first_name, last_name, username, condition, admin = False, creator = False):
+
+        self.username = username
+        self.first_name = first_name
+        self.last_name= last_name
+        self.id = id
+        self.condition = condition
+        self.admin = admin
+        self.creator = creator
+
+
 
 def GetKey():
 
-    key = random.random()
+    return round(random.random(), 15)
 
-    return key
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
+def ArtistSong(text):
 
-def ReadKeys(file):
+    def Substring(str, i, n):
 
-    keys = open(file, 'rt', encoding = 'utf_8')
+        substring = ''
 
-    Lines = ToLines(keys.read())
+        j = 0
 
-    keys.close()
+        while j + i < n and j + i < len(str):
 
-    return Lines
+            substring += str[j + i]
 
-def DelKey(file, key):
+            j += 1
 
-    keys = open(file, 'rt', encoding='utf_8')
-
-    Lines = ToLines(keys.read())
-
-    keys.close()
+        return substring
 
     i = 0
 
-    keys = open(file, 'wt', encoding = 'utf_8')
+    sub = ['', '']
 
-    while i < Count(Lines):
-
-        if Lines[i] != key:
-
-            keys.write(Lines[i] + '\n')
+    while i < len(text) and text[i] != '—':
 
         i += 1
 
-    keys.close()
+    sub[0] = Substring(text, 0, i - 1)
 
+    sub[1] = Substring(text, i + 2, len(text))
 
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-def ReadAdmins(file):
-
-    AdminsFile = open(file, 'rt', encoding = 'utf_8')
-
-    lines = ToLines(AdminsFile.read())
-
-    admins = []
-
-    i = 0
-
-    while i < Count(lines):
-
-        admins.append(Sub(lines[i])[1])
-
-        i += 1
-
-    AdminsFile.close()
-
-    return admins
-
-###############################################################################################################
-###############################################################################################################
-###############################################################################################################
-
-def DelSong(artist, song):
-
-    songs = []
-
-    SongsFile = open('DataBase/SongsFile.txt', 'rt', encoding = 'utf_8')
-
-    ArrayAward(songs, ReadSongs(SongsFile))
-
-    SongsFile.close()
-
-    SongsFile = open('DataBase/SongsFile.txt', 'wt', encoding='utf_8')
-
-    i = 1
-
-    while i < Count(songs):
-
-        if songs[i][0] != artist or songs[i][1] != song:
-
-            WriteSong(SongsFile, songs[i][0], songs[i][1], songs[i][2])
-
-        i += 1
-
-    SongsFile.close()
+    return sub

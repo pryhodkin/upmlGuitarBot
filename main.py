@@ -1,336 +1,595 @@
 import telebot
-
+import psycopg2
 import constants
 import functions
 
-
 bot = telebot.TeleBot(constants.token)
+
+connection = psycopg2.connect(
+    host = constants.host,
+    database = constants.database,
+    user = constants.user,
+    password = constants.password
+)
+
+database = functions.Database(connection)
+
+markup = functions.Markup()
+
+user_markup = telebot.types.ReplyKeyboardMarkup()
 
 hide_markup = telebot.types.ReplyKeyboardRemove()
 
-SongsFile = open('DataBase/SongsFile.txt', 'rt', encoding = 'utf_8')
+requests = ['', []]
 
-songs = []
+admin_list = ['', []]
 
-functions.ArrayAward(songs, functions.ReadSongs(SongsFile))
+add = {}
 
-SongsFile.close()
+remove = {}
 
-functions.SortMusic(songs)
-
-CheckAdd = False
-
-CheckAddArtist = False
-
-CheckAddSong = False
-
-CheckAddConfirm = False
-
-NewSong = ['', '', '']
-
-Admins = functions.ReadAdmins('DataBase/Admins.txt')
+remove_admin = 0
 
 
-"""
-user_markup_artists.row('✖')
-user_markup_artists.row('ДДТ','The White Stripes','Imagine Dragons', 'Radio Tapok')
-"""
+@bot.message_handler(commands = ['start'])
+
+def handle_start(message):
+
+    if not database.CheckExistUser(message.from_user.id):
+
+        user = [message.from_user.id,
+                message.from_user.first_name,
+                message.from_user.last_name,
+                message.from_user.username,
+                False,
+                False,
+                'first_question']
+
+        database.AddToTable('users', user)
+
+        user_markup = markup.YesNo('Есть', 'Нету')
+
+        bot.send_message(message.from_user.id, constants._start['new'], reply_markup = user_markup)
+
+    else:
+
+        bot.send_message(message.from_user.id, constants._start['old'])
+
+
+@bot.message_handler(commands = ['help'])
+
+def handle_help(message):
+
+    user = database.User(message.from_user.id)
+
+    if user.creator:
+
+        bot.send_message(user.id, constants._help['creator'])
+
+    elif user.admin:
+
+        bot.send_message(user.id, constants._help['admin'])
+
+    else:
+
+        bot.send_message(user.id, constants._help['user'])
+
+
 
 @bot.message_handler(commands = ['lyrics'])
 
 def handle_lyrics(message):
 
-    functions.ArrayAward(songs, functions.Shaker(songs, 1))
+    user = database.User(message.from_user.id)
 
-    user_markup = functions.SongsMarkup(songs)
+    database.ChangeCondition(user.id, 'lyrics_search')
 
-    functions.SortMusic(songs)
+    user_markup = markup.Songs(database, 'Lyrics')
 
-    bot.send_message(message.from_user.id, "Вот всё что есть", reply_markup = user_markup)
+    bot.send_message(user.id, constants._lyrics['lyrics_search'], reply_markup = user_markup)
+
+
+
+@bot.message_handler(commands = ['close'])
+
+def handle_close(message):
+
+    user = database.User(message.from_user.id)
+
+    database.ChangeCondition(user.id, 'None')
+
+    if user.admin:
+
+        bot.send_message(user.id, constants._close['admin'], reply_markup = hide_markup)
+
+    else:
+
+        bot.send_message(user.id, constants._close['user'], reply_markup = hide_markup)
+
+
+
+@bot.message_handler(commands = ['inputkey'])
+
+def handle_inputkey(message):
+
+    user = database.User(message.from_user.id)
+
+    database.ChangeCondition(user.id, 'input_key')
+
+    bot.send_message(user.id, constants._inputkey['input_key'])
+
+
+
+@bot.message_handler(commands = ['adminrequest'])
+
+def handle_adminrequest(message):
+
+    user = database.User(message.from_user.id)
+
+    if user.creator:
+
+        database.ChangeCondition(user.id, 'answer_requests')
+
+        user_markup = markup.RequestAnswer()
+
+        bot.send_message(user.id, constants._adminrequest['creator_requests'], reply_markup = user_markup)
+
+    elif not user.admin:
+
+        if not database.RequestExist(user.id):
+
+            database.AddToTable('adminrequests', [user.id, False, False])
+
+            bot.send_message(constants.Creator_id, constants._adminrequest['creator_request'].format(n = database.RequestsNumber()))
+
+            bot.send_message(user.id, constants._adminrequest['user'])
+
+        else:
+
+            bot.send_message(user.id, constants._adminrequest['already_sent'])
+
+    else:
+
+        bot.send_message(user.id, constants._adminrequest['already_admin'])
+
+
+
+@bot.message_handler(commands = ['addlyrics'])
+
+def handle_addlyrics(message):
+
+    user = database.User(message.from_user.id)
+
+    if user.admin:
+
+        database.ChangeCondition(user.id, 'addlyrics_artist')
+
+        bot.send_message(user.id, constants._addlyrics['artist'], reply_markup = hide_markup)
+
+
+
+@bot.message_handler(commands = ['removelyrics'])
+
+def handle_removelyrics(message):
+
+    user = database.User(message.from_user.id)
+
+    if user.admin:
+
+        remove[user.id] = []
+
+        user_markup = markup.RemoveSong(database, 'lyrics')
+
+        database.ChangeCondition(user.id, 'removelyrics_choose')
+
+        bot.send_message(user.id, constants._removelyrics['choice'], reply_markup = user_markup)
+
+
+
+@bot.message_handler(commands = ['adminlist'])
+
+def handle_adminlist(message):
+
+    user = database.User(message.from_user.id)
+
+    global admin_list
+
+    if user.admin:
+
+        admin_list = database.AdminList()
+
+        answer = admin_list[0]
+
+        bot.send_message(user.id, answer)
+
 
 
 @bot.message_handler(commands = ['addadmin'])
 
 def handle_addadmin(message):
 
-    if message.from_user.id == 371404061:
+    user = database.User(message.from_user.id)
 
-        keys = open('DataBase/ActiveAdminKeys.txt', 'at', encoding = 'utf_8')
+    if user.creator:
 
-        key = str(functions.GetKey())
+        key = functions.GetKey()
 
-        keys.write(key + '\n')
+        database.AddToTable('adminkeys', [key])
 
-        bot.send_message(message.from_user.id, 'Вот ключ: \n' + key + '\n Передай его тому кого надо добавить к списку админов.')
-
-    else:
-
-        bot.send_message(message.from_user.id,'Сорри, но добавить админа может только моя мать')
+        bot.send_message(user.id, constants._addadmin['key'].format(key = str(key)))
 
 
 
-@bot.message_handler(commands = ['remove'])
+@bot.message_handler(commands = ['removeadmin'])
 
-def handle_remove(message):
+def handle_removeadmin(message):
 
-    if functions.Check(Admins, str(message.from_user.id)):
+    global admin_list
 
-        functions.ArrayAward(songs, functions.Shaker(songs, 1))
+    admin_list = database.AdminList()
 
-        user_markup = functions.SongsMarkup(songs)
+    user = database.User(message.from_user.id)
 
-        functions.SortMusic(songs)
+    if user.creator:
 
-        constants.CheckRemoveSong = True
+        database.ChangeCondition(user.id, 'removeadmin_who')
 
-        bot.send_message(message.from_user.id, 'Какую песню хочешь удолить?', reply_markup = user_markup)
+        user_markup = markup.Numbers(len(admin_list[1]))
 
-    else:
-
-        bot.send_message(message.from_user.id, "Сорри за мат конечно, но песни могут удолять только админы.")
+        bot.send_message(user.id, admin_list[0] + constants._removeadmin['removeadmin_who'], reply_markup = user_markup)
 
 
 
-@bot.message_handler(commands = ['add'])
+@bot.message_handler(commands = ['userslist'])
 
-def handle_add(message):
+def handle_userslist(message):
 
-    if functions.Check(Admins, str(message.from_user.id)):
+    user = database.User(message.from_user.id)
 
-        bot.send_message(message.from_user.id, "Чью песню хочешь добавить?")
+    if user.creator:
 
-        constants.CheckAdd = True
+        answer = database.UserList()
 
-    else:
-
-        bot.send_message(message.from_user.id, "Сорри за мат конечно, но песни могут добавлять только админы.")
+        bot.send_message(user.id, answer)
 
 
 
+@bot.message_handler(commands = ['delete'])
 
-
-@bot.message_handler(commands = ['help', 'start'])
-
-def handle_help(message):
-
-    if functions.Check(Admins, str(message.from_user.id)):
-
-        bot.send_message(message.chat.id, "Вот что я умею:" + "\n" +
-                         "/help - список всех моих сверхспособностей" + "\n" +
-                         "/lyrics - найти текст песни" + "\n" +
-                         "/start - запустить меня" + "\n" +
-                         "/artist - искать по исполнителю" +"\n\n"+
-                         "А вот админские фичи (ты избранный!):" + "\n" +
-                         "/adminhelp - все фичи админов" + "\n" +
-                         "/add - добавить песню" + "\n" +
-                         "/remove - удолить песню")
-
-    else:
-
-        bot.send_message(message.chat.id, "Вот что я умею:" + "\n" +
-                     "/help - список всех моих сверхспособностей" + "\n" +
-                     "/lyrics - найти текст песни" + "\n" +
-                     "/start - запустить меня" + "\n" +
-                     "/artist - искать по исполнителю")
-
-@bot.message_handler(commands = ['adminhelp'])
-
-def handle_adminhelp(message):
-
-    if functions.Check(Admins, str(message.from_user.id)):
-
-        bot.send_message(message.from_user.id, "А вот админские фичи (ты избранный!):" + "\n" +
-                         "/adminhelp - все фичи админов" + "\n" +
-                         "/add - добавить песню" + "\n" +
-                         "/remove - удолить песню")
-
-    else:
-
-        bot.send_message(message.from_user.id, "Сорри за мат конечно, но ты не админ")
-
-
-
-
-
-
-@bot.message_handler(commands = ['artist'])
-
-def handle_artist(messege):
-
-    user_markup = functions.SetMarkupArtists(functions.Artists(songs))
-
-    bot.send_message(messege.from_user.id, 'Чья песня?', reply_markup = user_markup)
-
-
+def handle_delete(message):
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM Users WHERE id =" + str(message.from_user.id))
+    bot.send_message(message.from_user.id, "удалил")
 
 
 @bot.message_handler(content_types = ['text'])
 
 def handle_text(message):
 
-    if constants.CheckAdd and message.text != 'Всё, хуйня':
+    global add
 
-        NewSong[0] = message.text
+    global remove_admin
 
-        bot.send_message(message.from_user.id, "Ок, Теперь название")
+    user = database.User(message.from_user.id)
 
-        constants.CheckAdd = False
+    if user.condition == 'first_question':
 
-        constants.CheckAddArtist = True
+        if message.text == 'Да':
 
-    elif constants.CheckAddArtist and message.text != 'Всё, хуйня':
+            database.ChangeCondition(user.id, 'input_key')
 
-        NewSong[1] = message.text
-
-        bot.send_message(message.from_user.id, "Теперь текст")
-
-        constants.CheckAddArtist = False
-
-        constants.CheckAddSong = True
-
-    elif constants.CheckAddSong and message.text != 'Всё, хуйня':
-
-        NewSong[2] = message.text
-
-        user_markup = telebot.types.ReplyKeyboardMarkup(one_time_keyboard = True)
-
-        user_markup.row('Всё, хуйня')
-
-        user_markup.row('#Confirm', 'Я ошипся')
-
-        bot.send_message(message.from_user.id, NewSong[0] + ' - ' + NewSong[1] + '\n' + NewSong[2] + '\n' + 'Если всё ок жми #Confirm', reply_markup = user_markup)
-
-        constants.CheckAddSong = False
-
-        constants.CheckAddConfirm = True
-
-
-
-
-    elif constants.CheckAddConfirm  and message.text != 'Всё, хуйня':
-
-        if message.text == '#Confirm':
-
-            SongsFile = open('DataBase/SongsFile.txt', 'at', encoding = 'utf_8')
-
-            functions.WriteSong(SongsFile, NewSong[0], NewSong[1], NewSong[2])
-
-            SongsFile.close()
-
-            SongsFile = open('DataBase/SongsFile.txt', 'rt', encoding = 'utf_8')
-
-            functions.ArrayAward(songs, functions.ReadSongs(SongsFile))
-
-            functions.SortMusic(songs)
-
-            SongsFile.close()
-
-            constants.CheckAddConfirm = False
-
-            bot.send_message(message.from_user.id, 'Всё добавил, чекай', reply_markup = hide_markup)
-
-        elif message.text == 'Я ошипся':
-
-            constants.CheckAddConfirm = False
-
-            constants.CheckAdd = True
-
-            bot.send_message(message.from_user.id, 'Ну что поделаешь \n повторим \n Кто говоришь исполняет?', reply_markup = hide_markup)
-
-    elif message.text == 'Всё, хуйня':
-
-        constants.CheckAddArtist = False
-
-        constants.CheckAdd = False
-
-        constants.CheckAddConfirm = False
-
-        constants.CheckAddSong = False
-
-        bot.send_message(message.from_user.id, 'Ну ок, нафиг нам нада эта новая песня?', reply_markup = hide_markup)
-
-
-    else:
-
-        user_text = message.text
-
-        if message.text == "В глубь нашей родины":
-
-            bot.send_message(message.chat.id, "Идёт нациский марш")
-
-        if message.text == '✖':
-
-            bot.send_message(message.from_user.id,'Скрываю клаву', reply_markup = hide_markup)
-
-        if message.text == 'Исполнители':
-
-            user_markup = functions.SetMarkupArtists(functions.Artists(songs))
-
-            bot.send_message(message.from_user.id, 'Чья песня?', reply_markup = user_markup)
-
-        if functions.Check(user_text, '-'):
-
-            user_text = functions.Sub(user_text)[1]
-
-        if constants.CheckRemoveSong:
-
-            i = 1
-
-            while i < functions.Count(songs):
-
-                if songs[i][1] == user_text:
-
-                    functions.DelSong(functions.Sub(message.text)[0], functions.Sub(message.text)[1])
-
-                    bot.send_message(message.from_user.id, 'Всё, удолил песню: \n' + functions.Sub(message.text)[0] + ' - ' + functions.Sub(message.text)[1])
-
-                    songs.remove(songs[i])
-
-                i += 1
-
-            constants.CheckRemoveSong = False
+            bot.send_message(user.id, constants._start['first_question_yes'], reply_markup = hide_markup)
 
         else:
 
-            i = 1
+            database.ChangeCondition(user.id, 'None')
 
-            while i < functions.Count(songs):
+            bot.send_message(user.id, constants._start['first_question_no'], reply_markup = hide_markup)
 
-                if songs[i][1] == user_text:
+    elif user.condition == 'input_key':
 
-                    bot.send_message(message.from_user.id, songs[i][2])
+        if database.CheckKey(message.text):
 
-                i += 1
+            database.DeleteKey(message.text)
 
-            i = 0
+            if user.admin:
 
-            while i < functions.Count(functions.Artists(songs)):
+                bot.send_message(user.id, constants._inputkey['already'])
 
-                if functions.Artists(songs)[i] == user_text:
+            else:
 
-                    user_markup = functions.SetMarkup(songs, user_text)
+                database.AddAdmin(user.id)
 
-                    bot.send_message(message.from_user.id, 'Выбирай', reply_markup = user_markup)
+                bot.send_message(user.id, constants._inputkey['new_admin'])
 
-                i += 1
+        else:
 
-            if functions.Check(functions.ReadKeys('DataBase/ActiveAdminKeys.txt'), message.text):
+            bot.send_message(user.id, constants._inputkey['false'])
 
-                if functions.Check(Admins, str(message.from_user.id)):
+        database.ChangeCondition(user.id, 'None')
 
-                    functions.DelKey('DataBase/ActiveAdminKeys.txt', message.text)
+    elif user.condition == 'lyrics_search':
 
-                    bot.send_message(message.from_user.id, 'Чувак, твой ключ конечно правильный, но ты и так Админ')
+        if message.text == 'Исполнители':
 
-                else:
+            database.ChangeCondition(user.id, 'lyrics_search_by_artist')
 
-                    functions.AddAdmin(message.from_user.username, message.from_user.id)
+            user_markup = markup.Artists(database, 'Lyrics')
 
-                    functions.DelKey('DataBase/ActiveAdminKeys.txt', message.text)
+            bot.send_message(user.id, constants._lyrics['by_artist'], reply_markup = user_markup)
 
-                    functions.ArrayAward(Admins, functions.ReadAdmins('DataBase/Admins.txt'))
+        else:
 
-                    bot.send_message(message.from_user.id, 'Теперь ты тоже, Твоё величество, Админ')
+            artist_song = functions.ArtistSong(message.text)
+
+            lyrics = database.FindSong('Lyrics', artist_song[0], artist_song[1])
+
+            bot.send_message(user.id, lyrics)
+
+    elif user.condition == 'lyrics_search_by_artist':
+
+        database.ChangeCondition(user.id, 'lyrics_search_by_artist_ — ' + message.text)
+
+        user_markup = markup.Artist(database, 'Lyrics', message.text)
+
+        bot.send_message(user.id, constants._lyrics['artist_songs'], reply_markup = user_markup)
+
+    elif functions.ArtistSong(user.condition)[0] == 'lyrics_search_by_artist_':
+
+        if message.text == 'Исполнители':
+
+            database.ChangeCondition(user.id, 'lyrics_search_by_artist')
+
+            user_markup = markup.Artists(database, 'Lyrics')
+
+            bot.send_message(user.id, constants._lyrics['by_artist'], reply_markup = user_markup)
+
+        else:
+
+            lyrics = database.FindSong('Lyrics', functions.ArtistSong(user.condition)[1], message.text)
+
+            bot.send_message(user.id, lyrics)
+
+    elif user.condition == 'answer_requests':
+
+        global requests
+
+        requests = database.Requests()
+
+        user_markup = markup.Numbers(len(requests[1]))
+
+        if message.text == 'Принять запрос':
+
+            database.ChangeCondition(user.id, 'request_allow')
+
+            bot.send_message(user.id, requests[0] + constants._adminrequest['creator_requests_yes'], reply_markup = user_markup)
+
+        elif message.text == 'Отклонить запрос':
+
+            database.ChangeCondition(user.id, 'request_disallow')
+
+            bot.send_message(user.id, requests[0] + constants._adminrequest['creator_requests_no'], reply_markup = user_markup)
+
+    elif user.condition == 'request_allow':
+
+        n = int(message.text)
+
+        id = requests[1][n - 1]
+
+        database.RequestAnswer(id, True)
+
+        bot.send_message(user.id, constants._adminrequest['confirm_creator'])
+
+        bot.send_message(id, constants._adminrequest['confirm_user'])
+
+    elif user.condition == 'request_disallow':
+
+        n = int(message.text)
+
+        id = requests[1][n - 1]
+
+        database.RequestAnswer(id, False)
+
+        bot.send_message(user.id, constants._adminrequest['unconfirm_creator'])
+
+        bot.send_message(id, constants._adminrequest['unconfirm_user'])
+
+    elif user.condition == 'addlyrics_artist':
+
+        database.ChangeCondition(user.id, 'addlyrics_song')
+
+        add[user.id] = [message.text,'','']
+
+        bot.send_message(user.id, constants._addlyrics['song'])
+
+    elif user.condition == 'addlyrics_song':
+
+        database.ChangeCondition(user.id, 'addlyrics_lyrics')
+
+        add[user.id][1] = message.text
+
+        if database.SongExist(add[user.id][0], add[user.id][1], 'lyrics'):
+
+            database.ChangeCondition(user.id, 'addlyrics_exists')
+
+            user_markup = markup.YesNo('Оставить всё как было', 'Да, не годится, давай по новой')
+
+            bot.send_message(user.id, constants._addlyrics['already'].format(lyrics = database.FindSong('lyrics', add[user.id][0], add[user.id][1])), reply_markup = user_markup)
+
+        else:
+
+            bot.send_message(user.id, constants._addlyrics['lyrics'])
+
+    elif user.condition == 'addlyrics_exists':
+
+        if message.text == 'Оставить всё как было':
+
+            database.ChangeCondition(user.id, 'addlyrics_onemore')
+
+            user_markup = markup.YesNo('Не, я всё, выходи', 'Ну давай ещё по одной')
+
+            bot.send_message(user.id, constants._addlyrics['break'], reply_markup = user_markup)
+
+        elif message.text == 'Да, не годится, давай по новой':
+
+            database.ChangeCondition(user.id, 'addlyrics_lyrics')
+
+            bot.send_message(user.id, constants._addlyrics['continue'])
+
+    elif user.condition == 'addlyrics_lyrics':
+
+        database.ChangeCondition(user.id, 'addlyrics_confirm')
+
+        user_markup = markup.Confirm()
+
+        add[user.id][2] = message.text
+
+        bot.send_message(user.id, constants._addlyrics['confirm'].format(lyrics = add[user.id][2]), reply_markup = user_markup)
+
+    elif user.condition == 'addlyrics_confirm':
+
+        if message.text == '#Подтвердить':
+
+            if database.SongExist(add[user.id][0], add[user.id][1], 'lyrics'):
+
+                database.ChangeSong('lyrics', add[user.id][0], add[user.id][1], add[user.id][2])
+
+            else:
+
+                database.AddToTable('lyrics', add[user.id])
+
+            database.ChangeCondition(user.id, 'addlyrics_onemore')
+
+            user_markup = markup.YesNo('Не, я всё, выходи', 'Ну давай ещё по одной')
+
+            bot.send_message(user.id, constants._addlyrics['add'], reply_markup = user_markup)
+
+        elif message.text == 'Ввести заново':
+
+            database.ChangeCondition(user.id, 'addlyrics_artist')
+
+            bot.send_message(user.id, constants._addlyrics['restart'], reply_markup = hide_markup)
+
+        elif message.text == 'Выйти':
+
+            database.ChangeCondition(user.id, 'None')
+
+            bot.send_message(user.id, constants._addlyrics['exit'], reply_markup = hide_markup)
+
+    elif user.condition == 'addlyrics_onemore':
+
+        if message.text == 'Ну давай ещё по одной':
+
+            database.ChangeCondition(user.id, 'addlyrics_artist')
+
+            bot.send_message(user.id, constants._addlyrics['onemore'], reply_markup = hide_markup)
+
+        elif message.text == 'Не, я всё, выходи':
+
+            database.ChangeCondition(user.id, 'None')
+
+            bot.send_message(user.id, constants._addlyrics['exit'], reply_markup = hide_markup)
+
+    elif user.condition == 'removelyrics_choose':
+
+        if message.text == 'Всё, выбрал':
+
+            database.ChangeCondition(user.id, 'removelyrics_confirm')
+
+            user_markup = markup.Confirm()
+
+            answer = constants._removelyrics['confirm']
+
+            for song in remove[user.id]:
+
+                answer += '\n' + song[0] + ' — ' + song[1]
+
+            bot.send_message(user.id, answer, reply_markup = user_markup)
+
+        else:
+
+            artist_song = functions.ArtistSong(message.text)
+
+            remove[user.id].append((artist_song[0], artist_song[1]))
+
+            bot.send_message(user.id, constants._removelyrics['onemore'])
+
+    elif user.condition == 'removelyrics_confirm':
+
+        if message.text == '#Подтвердить':
+
+            for song in remove[user.id]:
+
+                database.RemoveSong('lyrics', song[0], song[1])
+
+            database.ChangeCondition(user.id, 'None')
+
+            bot.send_message(user.id, constants._removelyrics['exit'], reply_markup = hide_markup)
+
+        elif message.text == 'Ввести заново':
+
+            database.ChangeCondition(user.id, 'removelyrics_choose')
+
+            remove[user.id] = []
+
+            user_markup = markup.RemoveSong(database, 'lyrics')
+
+            bot.send_message(user.id, constants._removelyrics['restart'], reply_markup = user_markup)
+
+        elif message.text == 'Выйти':
+
+            database.ChangeCondition(user.id, 'None')
+
+            bot.send_message(user.id, constants._removelyrics['exit'], reply_markup = hide_markup)
+
+    elif user.condition == 'removeadmin_who':
+
+        n = int(message.text)
+
+        remove_admin = admin_list[1][n - 1]
+
+        database.ChangeCondition(user.id, 'removeadmin_confirm')
+
+        user_markup = markup.ConfirmRemoveAdmin()
+
+        bot.send_message(user.id, constants._removeadmin['removeadmin_confirm'].format(n = n), reply_markup = user_markup)
+
+    elif user.condition == 'removeadmin_confirm':
+
+        if message.text == 'Баааааннннннн':
+
+            database.ChangeCondition(user.id, 'None')
+
+            database.RemoveAdmin(remove_admin)
+
+            bot.send_message(user.id, constants._removeadmin['exit'], reply_markup = hide_markup)
+
+        elif message.text == 'Выбрать заново':
+
+            database.ChangeCondition(user.id, 'removeadmin_who')
+
+            user_markup = markup.Numbers(len(admin_list[1]))
+
+            bot.send_message(user.id, constants._removelyrics['restart'], reply_markup = user_markup)
+
+        elif message.text == 'Выйти':
+
+            database.ChangeCondition(user.id, 'None')
+
+            bot.send_message(user.id, constants._removelyrics['exit'], reply_markup = hide_markup)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
