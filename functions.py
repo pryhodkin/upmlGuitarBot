@@ -36,9 +36,15 @@ class Database:
 
         while i < len(list):
 
-            if type(list[i]) == type(str(list[i])) or list[i] == None:
+            if type(list[i]) == type(str(list[i])):
+
+                list[i] = self.ToSQLString(str(list[i]))
 
                 result += "'" + str(list[i]) + "'"
+
+            elif list[i] == None:
+
+                result += 'None'
 
             else:
 
