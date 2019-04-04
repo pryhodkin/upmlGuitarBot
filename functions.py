@@ -222,6 +222,8 @@ class Database:
 
         cursor = self.connection.cursor()
 
+        condition = self.ToSQLString(condition)
+
         cursor.execute("""
         
                 UPDATE users
@@ -292,6 +294,10 @@ class Database:
 
         cursor = self.connection.cursor()
 
+        artist = self.ToSQLString(artist)
+
+        song = self.ToSQLString(song)
+
         cursor.execute("""
         
                 SELECT *
@@ -307,6 +313,10 @@ class Database:
     def SongExist(self, artist, song, table):
 
         cursor = self.connection.cursor()
+
+        artist = self.ToSQLString(artist)
+
+        song = self.ToSQLString(song)
 
         cursor.execute("""
 
@@ -459,6 +469,10 @@ class Database:
         cursor.close()
 
     def RemoveSong(self, table, artist, song):
+
+        artist = self.ToSQLString(artist)
+
+        song = self.ToSQLString(song)
 
         cursor = self.connection.cursor()
 
