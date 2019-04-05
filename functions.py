@@ -38,13 +38,13 @@ class Database:
 
             if type(list[i]) == type(str(list[i])):
 
-                list[i] = self.ToSQLString(str(list[i]))
+                list[i] = self.ToSQLString(list[i])
 
-                result += "'" + str(list[i]) + "'"
+                result += "'" + list[i] + "'"
 
             elif list[i] == None:
 
-                result += 'None'
+                result +=  "'" + 'None' + "'"
 
             else:
 
@@ -82,19 +82,25 @@ class Database:
 
         i = 0
 
-        while i < len(string):
+        if string == None:
 
-            if string[i] == "'":
+            string = 'None'
 
-                result += "'"
+        else:
 
-            result += string[i]
+            while i < len(string):
 
-            i += 1
+                if string[i] == "'":
 
-        return result
+                    result += "'"
 
-    def CleanTable(self, table):
+                result += string[i]
+
+                i += 1
+
+            return result
+
+    def CleasnTable(self, table):
 
         cursor = self.connection.cursor()
 
@@ -222,8 +228,6 @@ class Database:
 
         cursor = self.connection.cursor()
 
-        condition = self.ToSQLString(condition)
-
         cursor.execute("""
         
                 UPDATE users
@@ -294,10 +298,6 @@ class Database:
 
         cursor = self.connection.cursor()
 
-        artist = self.ToSQLString(artist)
-
-        song = self.ToSQLString(song)
-
         cursor.execute("""
         
                 SELECT *
@@ -313,10 +313,6 @@ class Database:
     def SongExist(self, artist, song, table):
 
         cursor = self.connection.cursor()
-
-        artist = self.ToSQLString(artist)
-
-        song = self.ToSQLString(song)
 
         cursor.execute("""
 
@@ -469,10 +465,6 @@ class Database:
         cursor.close()
 
     def RemoveSong(self, table, artist, song):
-
-        artist = self.ToSQLString(artist)
-
-        song = self.ToSQLString(song)
 
         cursor = self.connection.cursor()
 
