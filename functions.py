@@ -138,7 +138,11 @@ class Database:
 
         columns = self.ToStringColumns(self.ColumnsList(table))
 
-        row = self.ToStringValue(row)
+        while i < len(row):
+
+            if row[i] == None or type(row[i]) == type(str(row[i])):
+
+                row[i] = self.ToStringValue(row[i])
 
         cursor.execute("""
 
@@ -228,6 +232,8 @@ class Database:
 
         cursor = self.connection.cursor()
 
+        condition = self.ToSQLString(condition)
+
         cursor.execute("""
         
                 UPDATE users
@@ -298,6 +304,10 @@ class Database:
 
         cursor = self.connection.cursor()
 
+        artist = self.ToSQLString(artist)
+
+        song = self.ToSQLString(song)
+
         cursor.execute("""
         
                 SELECT *
@@ -313,6 +323,10 @@ class Database:
     def SongExist(self, artist, song, table):
 
         cursor = self.connection.cursor()
+
+        artist = self.ToSQLString(artist)
+
+        song = self.ToSQLString(song)
 
         cursor.execute("""
 
@@ -467,6 +481,10 @@ class Database:
     def RemoveSong(self, table, artist, song):
 
         cursor = self.connection.cursor()
+
+        artist = self.ToSQLString(artist)
+
+        song = self.ToSQLString(song)
 
         cursor.execute("""
         
@@ -634,6 +652,8 @@ class Markup:
     def Artist(self, database, table, artist):
 
         markup = telebot.types.ReplyKeyboardMarkup(True, True)
+
+        artist = database.ToSQLString(artist)
 
         cursor = database.connection.cursor()
 

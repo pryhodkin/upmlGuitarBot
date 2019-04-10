@@ -3,11 +3,12 @@
 
 
 #database_data
-host = 'ec2-79-125-2-142.eu-west-1.compute.amazonaws.com'
-database = 'dbrl4u5ifab2gf'
-user = 'aaxjwpmjfmwwza'
-password = '9f29be56d5a7e7022728a49a54d30d513ecd3f4dcd4818ac3ae09b1af2b3822a'
+host = 'ec2-54-228-252-67.eu-west-1.compute.amazonaws.com'
+database = 'd6v6lg96m8pafe'
+user = 'jgtepkcozxuues'
+password = 'ea0afe004806e0aeec076620833e392aa250f0cf9f87693c895010a9878b938f'
 port = '5432'
+#postgres://jgtepkcozxuues:ea0afe004806e0aeec076620833e392aa250f0cf9f87693c895010a9878b938f@ec2-54-228-252-67.eu-west-1.compute.amazonaws.com:5432/d6v6lg96m8pafe
 
 """
 SQL query for all tables:

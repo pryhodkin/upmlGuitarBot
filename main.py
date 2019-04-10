@@ -53,7 +53,7 @@ def handle_start(message):
 
     else:
 
-        bot.send_message(message.from_user.id, constants._start['old'])
+        bot.send_message(message.from_user.id, constants._start['old'], hide_markup)
 
 
 @bot.message_handler(commands = ['help'])
@@ -116,7 +116,7 @@ def handle_inputkey(message):
 
     database.ChangeCondition(user.id, 'input_key')
 
-    bot.send_message(user.id, constants._inputkey['input_key'])
+    bot.send_message(user.id, constants._inputkey['input_key'], hide_markup)
 
 
 
