@@ -2,14 +2,17 @@ import telebot
 import psycopg2
 import constants
 import functions
+import os
 
 bot = telebot.TeleBot(constants.token)
 
+connect_vars = functions.DatabaseVars(str(os.environ['DATABASE_URL']))
+
 connection = psycopg2.connect(
-    host = constants.host,
-    database = constants.database,
-    user = constants.user,
-    password = constants.password
+    host = connect_vars['host'],
+    database = connect_vars['database'],
+    user = connect_vars['user'],
+    password = connect_vars['password']
 )
 
 database = functions.Database(connection)

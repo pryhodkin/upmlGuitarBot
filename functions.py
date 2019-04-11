@@ -887,3 +887,50 @@ def ArtistSong(text):
     sub[1] = Substring(text, i + 2, len(text))
 
     return sub
+
+
+def DatabaseVars(connect_string):
+
+    i = 0
+
+    connection = {
+        'user': '',
+        'password': '',
+        'host': '',
+        'port': '',
+        'database': ''
+    }
+
+    condition = 'None'
+
+    while i < len(connect_string):
+
+        if connect_string[i] == '/':
+
+            if connect_string[i - 1] == '/':
+
+                condition = 'user'
+
+            else:
+
+                condition = 'database'
+
+        elif connect_string[i] == ':' and condition == 'user':
+
+            condition = 'password'
+
+        elif connect_string[i] == '@' and condition == 'password':
+
+            condition = 'host'
+
+        elif connect_string[i] == ':' and condition == 'host':
+
+            condition = 'port'
+
+        elif condition != 'None':
+
+            connection[condition] += connect_string[i]
+
+        i += 1
+
+    return connection
